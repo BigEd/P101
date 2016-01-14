@@ -31,6 +31,7 @@ return;
 };
 
 function clear(){
-	$register_M = 0
-	$('#register_M').html(0)
+//non serve	$register_M = 0
+	$('#register_M').html(0);
+	$(document).data('window.M', 0); //Devo portare anche il suo contenuto a 0?
 };
