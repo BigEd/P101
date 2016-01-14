@@ -1,153 +1,145 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Programma 101</title>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Programma 101</title>
 
-<!-- Include meta tag to ensure proper rendering and touch zooming -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Include jQuery Mobile stylesheets -->
-  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
-  <!-- Include the jQuery library -->
-  <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-  <!-- Include the jQuery Mobile library -->
-  <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
- 
- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script> 
+		<!-- Include meta tag to ensure proper rendering and touch zooming -->
+		  <meta name="viewport" content="width=device-width, initial-scale=1">
+		  <!-- Include jQuery Mobile stylesheets -->
+		  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+		  <!-- Include the jQuery library -->
+		  <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+		  <!-- Include the jQuery Mobile library -->
+		  <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+		 
+		 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script> 
 
-<link rel="stylesheet" type="text/css" href="css/style.css" />    <!-- importo mio css style -->
+		<link rel="stylesheet" type="text/css" href="css/style.css" />    <!-- importo mio css style -->
 
-<script type="text/javascript" src="js/tastiera.js"></script>     <!-- mio javascript -->
+		<script type="text/javascript" src="js/tastiera.js"></script>     <!-- mio javascript -->
+	</head>
 
+	<body>
+		<table id="register">
+			<caption>--Memoria--</caption>
+			<tr>
+				<td>M</td>
+				<td id="register_M"></td>
+			</tr>
+			<tr>
+				<td>A</td>
+				<td id="register_A"></td>
+			</tr>
+			<tr>
+				<td>R</td>
+				<td id="register_R"></td>
+			</tr>
+			<tr>
+				<td>B</td>
+				<td id="register_B"></td>
+			</tr>
+			<tr>
+				<td>B/</td>
+				<td id="register_B/"></td>
+			</tr>
+			<tr>
+				<td>C</td>
+				<td id="register_C"></td>
+			</tr>
+			<tr>
+				<td>C/</td>
+				<td id="register_C/"></td>
+			</tr>
+			<tr>
+				<td>D</td>
+				<td id="register_D"></td>
+			</tr>   
+			<tr>
+				<td>D/</td>
+				<td id="register_D/"></td>
+			</tr>
+			<tr>
+				<td>E</td>
+				<td id="register_E"></td>
+			</tr>
+			<tr>
+				<td>E/</td>
+				<td id="register_E/"></td>
+			</tr>
+			<tr>
+				<td>F</td>
+				<td id="register_F"></td>
+			</tr>
+			<tr>
+				<td>F/</td>
+				<td id="register_F/"></td>
+			</tr>
+			<tr>
+				<td>Prog</td>
+				<td id="register_Prog"></td>
+			</tr>
+		</table>
 
-</head><body>
-<table id="register">
-    <caption>--Memoria--</caption>
-    
-    <tbody>
-    <tr>
-    <td>M</td>
-    <td id="register_M"></td>
-    </tr>
-    <tr>
-    <td>A</td>
-    <td id="register_A"></td>
-    </tr><tr>
-    <td>R</td>
-    <td id="register_R"></td>
-    </tr><tr>
-    <td>B</td>
-    <td id="register_B"></td>
-    </tr><tr>
-    <td>B/</td>
-    <td id="register_B/"></td>
-    </tr><tr>
-    <td>C</td>
-    <td id="register_C"></td>
-    </tr><tr>
-    <td>C/</td>
-    <td id="register_C/"></td>
-    </tr>
-    <tr>
-    <td>D</td>
-    <td id="register_D"></td>
-    </tr>
-    
-    <tr>
-    <td>D/</td>
-    <td id="register_D/"></td>
-    </tr>
-<tr>
-    <td>E</td>
-    <td id="register_E"></td>
-    </tr>
-    <tr>
-    <td>E/</td>
-    <td id="register_E/"></td>
-    </tr><tr>
-    <td>F</td>
-    <td id="register_F"></td>
-    </tr><tr>
-    <td>F/</td>
-    <td id="register_F/"></td>
-    </tr>
-    <tr>
-    <td>Prog</td>
-    <td id="register_Prog"></td>
-    </tr>
-    </tbody>
-    </table>
-<div id="container">
+		<div id="container">
+			<textarea id="write" rows="6" cols="50"></textarea>
+			<p>
+				<input id="spinner" name="value" readonly="readonly">
+				<button id="setvalue">Set value to 5</button>
+			</p>
+				
+			 <div id="block1">  
+				<ul id="keyboard">
+				 
+					<li class="init registro">F</li>
+					<li class="operatore" id="fromM">&#x2191</li>
+					<li class="numero">7</li>
+					<li class="numero">8</li>
+					<li class="numero lastitem">9</li>
+					<li class="registro init">E</li>
+					<li class="clear"> Clear </li>
+					<li class="numero">4</li>
+					<li class="numero">5</li>
+					<li class="numero lastitem">6</li>
+					<li class="registro init">D</li>
+					<li class="registro">/</li>
+					<li class="numero">1</li>
+					<li class="numero">2</li>
+					<li class="numero lastitem">3</li>
+					<li class="registro init">C</li>
+					<li class="registro">B</li>
+					<li class="numero">0</li>
+					<li class="numero">.</li>
+					<li class="numero lastitem">-</li>
+				</ul>
+			</div>
 
+			<div id="block2">
+				<ul id="keyboard">
+					<li class="startbtn">S</li>
+				</ul>
+			</div>
 
-    <textarea id="write" rows="6" cols="50"></textarea>
-    
-    
-    
-  <p>
- 
- 
-  <input id="spinner" name="value" readonly="readonly">
-  <button id="setvalue">Set value to 5</button>
-</p>
-    
-    
-    
- <div id="block1">  
-    <ul id="keyboard">
-     
-<li class="init registro">F</li>
-<li class="operatore" id="fromM">&#x2191</li>
-<li class="numero">7</li>
-<li class="numero">8</li>
-<li class="numero lastitem">9</li>
-<li class="registro init">E</li>
-<li class="clear"> Clear </li>
-<li class="numero">4</li>
-<li class="numero">5</li>
-<li class="numero lastitem">6</li>
-<li class="registro init">D</li>
-<li class="registro">/</li>
-<li class="numero">1</li>
-<li class="numero">2</li>
-<li class="numero lastitem">3</li>
-<li class="registro init">C</li>
-<li class="registro">B</li>
-<li class="numero">0</li>
-<li class="numero">.</li>
-<li class="numero lastitem">-</li>
-</ul>
-</div>
-
-<div id="block2">
-<ul id="keyboard">
-<li class="startbtn">S</li>
-</ul>
-</div>
-
-<div id="block3">
- <ul id="keyboard">
-<li class="init movebtn" id="toA">&#x2193</li>
-<li class="operatore" id="exchange">&#x2195</li>
-<li class=" operatore lastitem">&#x221A</li>
-<li class=" operatore init">-</li>
-<li class="operatore">X</li>
-<li class="registro">A</li>
-<li class=" operatore lastitem">&#x25CA</li>
-<li class="operatore init" id="sum">+</li>
-<li class="operatore">:</li>
-<li class="registro">R</li>
-<li class="operatore lastitem">*</li>
-<li class="registro init">V</li>
-<li class="registro">W</li>
-<li class="registro">Y</li>
-<li class="registro lastitem">Z</li>
-
-
-</ul>
-</div>
-</div>
-
-
-</body>
+			<div id="block3">
+				<ul id="keyboard">
+					<li class="init movebtn" id="toA">&#x2193</li>
+					<li class="operatore" id="exchange">&#x2195</li>
+					<li class=" operatore lastitem">&#x221A</li>
+					<li class=" operatore init">-</li>
+					<li class="operatore">X</li>
+					<li class="registro">A</li>
+					<li class=" operatore lastitem">&#x25CA</li>
+					<li class="operatore init" id="sum">+</li>
+					<li class="operatore">:</li>
+					<li class="registro">R</li>
+					<li class="operatore lastitem">*</li>
+					<li class="registro init">V</li>
+					<li class="registro">W</li>
+					<li class="registro">Y</li>
+					<li class="registro lastitem">Z</li>
+				</ul>
+			</div>
+		</div>
+		
+	</body>
 </html>
