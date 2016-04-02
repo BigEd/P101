@@ -1,0 +1,15 @@
+AV,,
+,,S
+,,toA
+,,mult
+,,S
+,A,print
+,B,exchange
+,,toA
+,,mult
+,A,print
+,B,sum
+,A,print
+,A,sqrt
+,A,print
+,,S

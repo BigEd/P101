@@ -474,8 +474,8 @@ function constantInstruction(value){
 function printProgram() {
     console.log('printing program');
     var n = statoMacchina.instructionCounter;
-    var i = searchConst();
-    for (i = searchConst(); i < n; i++){
+    var i = 0;
+    for (i = 0; i < n; i++){
         console.log(i);
         var instruction=localStorage.getItem('instruction'+i);
         printInstruction(instruction);
@@ -562,9 +562,6 @@ function openFile(event) {
         inserisciCartolina();
         var testo = reader.result;
         var linee = testo.split('\n');
-        
-        var title = document.getElementById('files').value;
-		document.getElementById("progName").value = title;
         if (linee.length > 120){
             window.alert("Sono ammessi solo programmi con massimo 120 istruzioni");
             turnOnRedLight();
@@ -581,7 +578,6 @@ function openFile(event) {
         console.log(reader.result.substring(0, 200));
     };
     reader.readAsText(input.files[0]);
-    
 } ;
 
 function printresult(){
@@ -629,93 +625,4 @@ function storeConst(letter){
         localStorage.setItem('n', statoMacchina.instructionCounter); 
         
     
-};
-function searchConst() {
-	var i = 0;
-    var numConst=0;
-	console.log('searching for store instruction ');
-	for (i = 0; i < 5; i++) {
-       
-		var instruction = localStorage.getItem('instruction' + i);
-		if (instruction) {
-            instruction = instruction.split(',');
-			if (instruction[2] == 'store'){
-				console.log('store instruction found');
-                loadConst(instruction);
-                numConst++;
-			}
-        }
-       
-	}updateMachine();
-    if (numConst==0){
-        console.log('no constant in this program');
-    }
-    else{
-        console.log(numConst+' constant found');
-    }
-    return numConst;
-};
-function loadConst(instruction){
-     
-        var value = instruction[0];
-        var destination = instruction[1];
-        storeInRegister(value, destination);
-        
-};
-
-function getWeelPosition(){
-    var chooseId = window.matchMedia("screen and (min-width: 650px)");
-    if(chooseId.matches){
-        var position=$('#spinnerBottom').val();
-        
-    }
-    else{
-        var position=$('#spinnerTop').val();
-        
-        
-    }
-    return position;
-}
-
-function saveTextAsFile()
-{
-	var textToWrite = saveProgram();
-	var textFileAsBlob = new Blob([textToWrite], {type:'text/plain'});
-	var name = document.getElementById("progName").value;
-    var fileNameToSaveAs=name+'.txt';
-	var downloadLink = document.createElement("a");
-	downloadLink.download = fileNameToSaveAs;
-	downloadLink.innerHTML = "Download File";
-	if (window.webkitURL != null)
-	{
-		// Chrome allows the link to be clicked
-		// without actually adding it to the DOM.
-		downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
-	}
-	else
-	{
-		// Firefox requires the link to be added to the DOM
-		// before it can be clicked.
-		downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
-		downloadLink.onclick = destroyClickedElement;
-		downloadLink.style.display = "none";
-		document.body.appendChild(downloadLink);
-	}
-
-	downloadLink.click();
-}
-
-function destroyClickedElement(event)
-{
-	document.body.removeChild(event.target);
-}
-
-function saveProgram() {
-    var output='';
-    var n = statoMacchina.instructionCounter;
-    for (var i = 0; i < n; i++){
-        var output= output + localStorage.getItem('instruction'+i)+'\n';
-        
-    }
-    return output;
 };

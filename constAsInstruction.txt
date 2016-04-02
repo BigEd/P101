@@ -1,0 +1,14 @@
+AV,,
+123.456789,a,fromM
+,D,sub
+,D,sub
+,D,sub
+,D,sub
+,D,sub
+,D,sub
+,D,sub
+,D,sub
+,D,sub
+,,toA
+,,sum
+,A,print

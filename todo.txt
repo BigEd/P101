@@ -1,0 +1,2 @@
+troncamento invece dell'approssimazione
+controllare il valore assoluto

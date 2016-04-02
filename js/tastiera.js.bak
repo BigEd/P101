@@ -62,13 +62,12 @@ $(function () {
     $('#clear').click(function () {
         clear();
         updateMachine();
-        
     });
 });
 
 $(function () {
      //Tasto reset
-    $('.reset').click(function () {
+    $('#reset').click(function () {
         resetStyle();
         resetFunction();
         updateMachine();
@@ -78,7 +77,6 @@ $(function () {
      //Tasto elimina stampa
     $('#eliminaStampa').click(function () {
         $( "#stampa" ).empty();
-        
     });
 });
 
@@ -165,7 +163,6 @@ $(function () {
             console.log("Record Program mode ON");
             modactive_ON('#record_pr');
             statoMacchina.recordPrPressed = true;
-            verifyDEF();
             inserisciCartolina();
             
         }
@@ -199,106 +196,34 @@ $(function () {
 
 $(function () {
     $("#label_V").click(function () {
-		console.log('pressed V');
         if (statoMacchina.recordPrPressed){
-            if (statoMacchina.selectedRegister == 'A'){
-                console.log('register A selected');
+            if (statoMacchina.selectRegister == 'A'){
                 //create the istruction
                 var instructions = [];
                 instructions.push('AV');
                 instructions.push('');
                 instructions.push('');
-                //record the instruction            
-                localStorage.setItem("instruction" + statoMacchina.instructionCounter, instructions);
-                statoMacchina.instructionCounter++;
-                localStorage.setItem('n', statoMacchina.instructionCounter);
-	    	    deselectRegisterBox();
             }
         }
-		else{
-			seek('AV');
-			statoMacchina.running = true;
-        	runProgram();
-		}
         statoMacchina.selectedLabel = 'V';
 	});
 });
 
 $(function () {
     $("#label_W").click(function () {
-		console.log('pressed W');
-		if (statoMacchina.recordPrPressed){
-            if (statoMacchina.selectedRegister == 'A'){
-                //create the istruction
-                var instructions = [];
-                instructions.push('AW');
-                instructions.push('');
-                instructions.push('');
-                //record the instruction            
-                localStorage.setItem("instruction" + statoMacchina.instructionCounter, instructions);
-                statoMacchina.instructionCounter++;
-                localStorage.setItem('n', statoMacchina.instructionCounter);
-	    	    deselectRegisterBox();
-				}
-        }
-		else{
-			seek('AW');
-            statoMacchina.running = true;
-        	runProgram();
-		}
         statoMacchina.selectedLabel = 'W';
 	});
 });
 
 $(function () {
     $("#label_Y").click(function () {
-		console.log('pressed Y');
-        if (statoMacchina.recordPrPressed){
-            if (statoMacchina.selectedRegister == 'A'){
-                //create the istruction
-                var instructions = [];
-                instructions.push('AY');
-                instructions.push('');
-                instructions.push('');
-                //record the instruction            
-                localStorage.setItem("instruction" + statoMacchina.instructionCounter, instructions);
-                statoMacchina.instructionCounter++;
-                localStorage.setItem('n', statoMacchina.instructionCounter);
-	    	    deselectRegisterBox();
-            }
-        }
-		else {
-			seek('AY');
-			statoMacchina.running = true;
-        	runProgram();
-		}
-        statoMacchina.selectedLabel = 'Y';
+        statoMacchina.selectedLabel = 'W';
 	});
 });
 
 $(function () {
     $("#label_Z").click(function () {
-		console.log('pressed Z');
-        if (statoMacchina.recordPrPressed){
-            if (statoMacchina.selectedRegister == 'A'){
-                //create the istruction
-                var instructions = [];
-                instructions.push('AZ');
-                instructions.push('');
-                instructions.push('');
-                //record the instruction            
-                localStorage.setItem("instruction" + statoMacchina.instructionCounter, instructions);
-                statoMacchina.instructionCounter++;
-                localStorage.setItem('n', statoMacchina.instructionCounter);
-	    	    deselectRegisterBox();
-			}
-        }
-		else{
-			seek('AZ');
-			statoMacchina.running = true;
-        	runProgram();
-		}
-	statoMacchina.selectedLabel = 'Z';
+        statoMacchina.selectedLabel = 'Z';
 	});
 });
 $(function () {
@@ -307,9 +232,4 @@ $(function () {
 		
 	});
 });
-$(function () {
-    $("#save").click(function () {
-        saveTextAsFile();
-		
-	});
-});
+

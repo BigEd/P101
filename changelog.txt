@@ -1,0 +1,1 @@
+* openfile pulisce il local storage prima di caricarlo col nuovo programma, non c'è piu necessità di fare il reset

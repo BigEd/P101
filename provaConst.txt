@@ -1,0 +1,6 @@
+7,D,store
+5,F,store
+AV,,
+,D,toA
+,F,sub
+,A,print

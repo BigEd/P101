@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Programma 101</title>
+
+        <!-- Include meta tag to ensure proper rendering and touch zooming -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       
+        <!-- Include the jQuery library -->
+       <script src="http://code.jquery.com/jquery-2.2.2.min.js"
+			  integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI="
+			  crossorigin="anonymous"></script>
+       
+        
+
+        <link rel="stylesheet" type="text/css" href="css/viewportstyle.css" />    <!-- importo mio css style -->
+        
+        <script type="text/javascript" src="js/reader.js"></script>
+        <script type="text/javascript" src="js/view.js"></script>
+        <script type="text/javascript" src="js/funzioni.js"></script>
+        <script type="text/javascript" src="js/tastiera.js"></script>     <!-- mio javascript -->
+		 
+        <audio class="audioDemo" preload="none"> 
+            <source id="audiotag1" src="keystroke.wav">
+        </audio>
+    </head>
+<body>
+    
+    <div id="output">
+	 
+	     <div id="posizione_stampa">
+             <div id="stampa"></div>    
+             
+         </div>
+         
+	     <div id="caricaProgramma">
+                    <div id="carica">
+                        <label for="files" class="custom-file-upload">
+                        <img  src= "http://fantapr.altervista.org/tasti2/upload.png" id="upload"></img>
+                        </label>
+
+                         <input type="file" id="files" name="file" accept='text/plain' onchange='openFile(event)'/>
+                         
+                        
+                          <img  src= "http://fantapr.altervista.org/tasti2/save.png" id="save"></img>
+      
+                           </div>
+    
+    
+                    <div id="cartolinaDiv">
+                    <img  src= "http://fantapr.altervista.org/tasti2/cartolinameta.png" id="cartolina">
+    
+                    </div>
+                    <div id="cartolinaDiv">
+                    <input type="text" id="progName" name="fname">
+    
+                    </div>
+    </div>
+    
+	<div id="registri">
+        	<table>
+            
+            <tr>
+                <td class="columnA">M</td>
+                <td class="columnB" id="register_M"></td>
+            </tr>
+            <tr>
+                <td class="columnA">A</td>
+                <td id="register_A"></td>
+            </tr>
+            <tr>
+                <td class="columnA">R</td>
+                <td id="register_R"></td>
+            </tr>
+            <tr>
+                <td class="columnA">B</td>
+                <td id="register_B"></td>
+            </tr>
+            <tr>
+                <td class="columnA">B/</td>
+                <td id="register_b"></td>
+            </tr>
+            <tr>
+                <td class="columnA">C</td>
+                <td id="register_C"></td>
+            </tr>
+            <tr>
+                <td class="columnA">C/</td>
+                <td id="register_c"></td>
+            </tr>
+            <tr>
+                <td class="columnA">D</td>
+                <td id="register_D"></td>
+            </tr>
+            
+            <tr>
+                <td class="columnA">D/</td>
+                <td id="register_d"></td>
+            </tr>
+            <tr>
+                <td class="columnA">E</td>
+                <td id="register_E"></td>
+            </tr>
+            <tr>
+                <td class="columnA">E/</td>
+                <td id="register_e"></td>
+            </tr>
+            <tr>
+                <td class="columnA">F</td>
+                <td id="register_F"></td>
+            </tr>
+            <tr>
+                <td class="columnA">F/</td>
+                <td id="register_f"></td>
+            </tr>
+        </table>
+      </div>
+
+	</div>
+    
+  <div id="lights">
+            <div id="etichetta"><b>Olivetti - Underwood</b> <i>Programma101</i></div>
+            <span id="green_light"></span>
+            <span id="red_light"></span>
+  </div>
+	
+	
+   <div id="controlli">
+   
+
+       <span id="resetTop" class="reset" >GEN RESET</span>
+       <span id="eliminaStampa">Elimina Stampa</span>
+       <span id="record_pr">RECORD PR</span>
+       <span id="print_pr">PRINT PR</span>
+       
+       
+       <input type="number" id="spinnerTop" class="spinner"MIN="0" MAX="15" VALUE="2" >   
+   
+    	
+   </div>
+   
+   <span class="reset" id="resetBottom">GEN RESET</span>
+   
+   <div id="tastiera">
+       <div id="blocco_tasti1">
+            <span class="registro init">F</span>
+            <span class="operatore" id="fromM">&#x2191 </span>
+            <span class="numero">7</span>
+            <span class="numero">8</span>
+            <span class="numero">9</span>
+            <span class="registro">E</span>
+            <span id="clear"> Clear </span>
+            <span class="numero">4</span>
+            <span class="numero">5</span>
+            <span class="numero">6</span>
+            <span class="registro">D</span>
+            <span id="slash">/</span>
+            <span class="numero">1</span>
+            <span class="numero">2</span>
+            <span class="numero">3</span>
+            <span class="registro">C</span>
+            <span class="registro">B</span>
+            <span class="numero">0</span>
+            <span class="numero" id="virgola">.</span>
+            <span class="numero" id="segno">-</span>
+       
+       
+       </div>
+       
+       <div id="blocco_tasti2">
+       
+            <span class="start">START</span>
+       </div>
+       <div id="blocco_tasti3">
+
+            <span id="toA">&#x2193 </span>
+            <span id="exchange">&#x2195 </span>
+            <span class="operatore" id="sqrt">&#x221A </span>
+            <span class="operatore" id="subtract">-</span>
+            <span class="operatore" id="multiply">X</span>
+            <span class="registro">A</span>
+            <span class="operatore" id="print">&#x25CA </span>
+            <span class="operatore" id="sum">+</span>
+            <span class="operatore" id="divide">&#x00F7</span>
+            <span class="registro">R</span>
+            <span class="operatore" id="clear_reg">*</span>
+            <span class="label" id="label_V">V</span>
+            <span class="label" id="label_W">W</span>
+            <span class="label" id="label_Y">Y</span>
+            <span class="label" id="label_Z">Z</span>
+       </div>   
+   </div>
+   
+   <input type="number" id="spinnerBottom" class="spinner"MIN="0" MAX="15" VALUE="2" >
+   </body>
+   
+</html>

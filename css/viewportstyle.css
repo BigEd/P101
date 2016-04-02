@@ -1,0 +1,590 @@
+@charset "utf-8";
+/* CSS Document */
+body{margin:0;	background-color:#DFD5CD;}
+
+
+	*{font-family:arial;
+-webkit-user-select:none; /* Chrome/Safari */ 
+-moz-user-select: none; /* Firefox */ 
+-ms-user-select: none; /* IE10+ */}
+
+ @media only screen and (min-width: 650px){
+      #resetTop, #spinnerTop{
+         display:none !important;
+     }
+ }
+@media only screen and (max-width: 649px) and (min-width: 400px) {
+     #blocco_tasti2 span, .registro, #slash,#spinnerTop, .label, .numero, .operatore, #exchange, #toA,#etichetta{
+        font-size: 13px !important;
+    }
+    #clear, table td,#progName,#posizione_stampa{
+    font-size:11px !important;
+    }
+    #record_pr,#print_pr, #resetTop, #eliminaStampa{
+    font-size: 9px !important;
+    }
+     #resetBottom, #spinnerBottom{
+          display:none !important;
+     }
+     #resetTop, #spinnerTop{
+         display:inline-block !important;
+         
+     }
+}
+ 
+@media only screen and (max-width: 399px)and (min-width: 241px) {
+       
+    #blocco_tasti2 span, .registro, #slash,#spinnerTop, .label, .numero, .operatore, #exchange, #toA,#etichetta{
+        font-size: 11px !important;
+    }
+    #clear, table td,#posizione_stampa{
+    font-size: 9px !important;
+    }
+    #record_pr,#print_pr,#progName, #resetTop, #eliminaStampa{
+    font-size: 7px !important;
+    }
+     #resetBottom, #spinnerBottom{
+          display:none !important;
+     }
+     #resetTop, #spinnerTop{
+         display:inline-block !important;
+         
+     }
+}
+@media only screen and (max-width: 240px) {
+       
+    #blocco_tasti2 span, .registro,#spinnerTop, #slash, .label, .numero, .operatore, #exchange, #toA{
+        font-size: 9px !important;
+    }
+    #clear, table td,#posizione_stampa,#progName,#etichetta{
+    font-size: 7px !important;
+    }
+    #record_pr,#print_pr, #resetTop, #eliminaStampa{
+    font-size: 6px !important;
+    }
+     #resetBottom, #spinnerBottom{
+          display:none !important;
+     }
+     #resetTop, #spinnerTop{
+     display:inline-block !important;
+     }
+     #etichetta{
+        padding:0 !important;     
+         }
+     #resetTop, #eliminaStampa{
+         padding:0.1em !important;
+     }
+         
+     
+   
+}
+
+#output{
+    position:absolute;
+    width:100vw;
+    max-width: 650px;
+    height:50vh;
+    padding:0;
+    margin:0 auto;
+    font-size:0;
+    text-align:center;
+    display:inline-block;
+   
+}
+
+#controlli{
+    position:absolute;
+    top:62vh;
+    width:100vw;
+    max-width: 650px;
+    height:9vh;
+    padding:0;
+    margin:0 auto;
+    text-align:center;
+    font-size:0;
+    
+}
+
+
+#lights{
+    position:absolute;
+    top:53vh;
+    width:100vw;
+    max-width: 650px;
+    height:9vh;
+    padding:0;
+    margin:0;
+    display:inline-block;
+    text-align:center;
+    font-size:0;
+    
+}
+
+#tastiera {    
+    position:absolute;
+    top:72vh;
+    width:98.2vw;
+    max-width: 500px;
+    height:28vh;
+    padding:0;
+    margin:0 auto;
+    font-size:0;
+    text-align:center;
+    vertical-align:middle;
+}
+
+#blocco_tasti1{
+    
+    width:calc(100%/11*5);
+    max-width:calc(500px*5/11);
+    background-color:black;
+    margin:0;
+    display:inline-block;
+}
+#blocco_tasti2{
+    
+    width:calc(100%/11*2);
+    max-width:calc(500px*2/11);
+    background-color:black;
+    display:inline-block;
+    margin:0;
+    padding:0;
+    vertical-align:top;
+    
+   
+}
+#blocco_tasti3{
+    
+    width:calc(100%/11*4);
+    max-width:calc(500px*4/11);
+    background-color:black;
+    display:inline-block;
+    margin:0;
+}
+#blocco_tasti1 span {
+    width:calc(98vw/11);
+    height:calc(98vw/11);
+    max-width:calc(500px/11);
+    max-height:calc(500px/11);
+    display: inline-block;
+    text-align: center;
+    vertical-align:middle;
+}
+#blocco_tasti2 span{
+    font-family: sans-serif;
+    font-size:15px;
+    width:calc(98vw/11*2);
+    height:calc(98vw/11*4);
+    max-width:calc(500px/11*2);
+    max-height:calc(500px/11*4);
+    display: inline-block;
+    background: url("http://fantapr.altervista.org/tasti2/start.png") 0 0 / cover;
+    color: white;
+    vertical-align:middle;
+    text-align: center;
+    
+    
+}
+#blocco_tasti3 span {
+    width:calc(98vw/11);
+    max-width:calc(500px/11);
+    height:calc(98vw/11);
+    max-height:calc(500px/11);
+    display: inline-block;
+    text-align: center;
+    vertical-align:middle;
+}
+.registro, #slash, .label{
+    font-family: arial,sans-serif;
+    font-size: 15px;
+    background: url("http://fantapr.altervista.org/tasti2/registro.png") 0 0 / cover;
+    color: white;
+    font-weight:bold;
+}
+.label{
+	    background: url("http://fantapr.altervista.org/tasti2/label.png") 0 0 / cover !important;
+
+}
+
+.numero{
+    font-family: arial,sans-serif;
+    font-size: 15px;
+    background: url("http://fantapr.altervista.org/tasti2/numero.png") 0 0 / cover;
+    color: black;
+    font-weight:bold;
+}
+.operatore, #exchange{
+    font-family: arial,sans-serif;
+    font-size: 15px;
+    background: url("http://fantapr.altervista.org/tasti2/operatore.png") 0 0 / cover;
+    color: black;
+    font-weight:bold;
+	
+}
+#toA{
+    font-family: arial,sans-serif;
+    font-size: 15px;
+    background: url("http://fantapr.altervista.org/tasti2/cambio.png") 0 0 / cover;
+    color: black;
+    font-weight:bold;
+    width:calc(98vw*2/11) !important;
+    max-width:calc(500px*2/11) !important; 
+}
+#clear{
+    font-family: arial,sans-serif;
+    font-size: 13px;
+    background: url("http://fantapr.altervista.org/tasti2/numero.png") 0 0 / cover;
+    color: black;
+    font-style:italic;
+}
+
+#blocco_tasti1 span:after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+#blocco_tasti2 span:after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+#blocco_tasti3 span:after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+#tastiera span:hover {
+    position: relative;
+    left: 1px;
+    top: 1px;
+    cursor: pointer;
+}
+#registri{
+    position:absolute;
+    top:1%;
+    bottom:1%;
+    right:1%;
+    width:38%;	
+    height:49vh;
+    max-width:230px;
+    background: #fff;
+    border: 1px solid;
+    border-radius:5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    padding:0;
+    overflow:auto;
+  
+}
+table {
+    position:absolute;
+    top:0;
+    bottom:0;
+    right:0;
+    width:100%;	
+    height:49vh;
+    max-width:230px;
+    background: #fff;
+    border-radius:5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    padding:0;
+  
+}
+td {
+    text-align:center;
+    font-size:13px;
+   
+}
+td.columnA {
+    padding:0;
+    width: 20%;
+    border:1px solid black;
+    border-radius:5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+td.columnB {
+    width: 80%;
+
+}
+
+#posizione_stampa{
+    position:absolute;
+    top:1%;
+    bottom:1%;
+    left:1%;
+    width:38%;
+    height:49vh;
+    max-width:230px;
+    font-size:13px;
+    border: 1px solid black;
+    background-color:white;
+    border-radius:5px;
+    overflow:auto;
+   
+          
+  }
+  #stampa{
+     width:100%;
+     max-height:100%;
+     position:absolute;
+     bottom:0;
+        
+     
+}
+#caricaProgramma{
+    position:absolute;
+    top:1%;
+    bottom:1%;
+    left:40%;
+    right:40%;
+    width:20%;
+    height:49vh;
+    max-width:180px;
+    
+
+}
+
+#carica{
+    position:absolute;
+    width:100%;
+    height:20%;
+    bottom:0;
+    
+    
+}
+#cartolinaDiv{
+    position:absolute;
+    width:100%;
+    bottom:22%;
+    overflow:hidden;
+    
+    }
+.bordo{
+    border-bottom:5px solid black;
+}    
+#cartolina{
+   
+    height:100%;
+    width:85%;
+    margin-bottom:10%;
+    display:none;
+    
+       
+    -ms-transition:margin-bottom 2s linear;
+    -moz-transition:margin-bottom 2s linear;
+    -webkit-transition:margin-bottom 2s linear;
+    -0-transition:margin-bottom 2s linear;
+    transition:margin-bottom 2s linear;
+}
+#progName{
+    height:70%;
+    width:70%;
+    margin-bottom:35%;
+    display:none;
+    font-size:15px;
+    text-align:center;
+    background-color:#EDF3F1;
+    border:1px solid grey;
+   
+}
+ .inserisci{
+     
+     margin-bottom:-40% !important;
+     
+ }
+input[type="file"] {
+    display:none;
+}
+ #upload {
+    
+    float:left;
+    width:50%;
+    cursor:pointer;
+    display:inline-block;
+}   
+#save {
+    
+    float:right;
+    width:50%;
+    cursor:pointer;
+    display:inline-block;
+   
+}   
+
+#tastiera,#lights, #controlli, #output{
+    left: 50%; 
+    transform: translate(-50%);
+}
+#record_pr , #print_pr{
+    font-size:11px;
+    color:white;
+    background-color:black;
+    width: 16vw;
+    height: 7vw;
+    max-width:84px;
+    max-height:42px;
+    display:inline-block;
+    text-align: center;
+    -moz-border-radius: 1px;
+    -webkit-border-radius: 1px;
+    border-radius:1px;
+    margin-left:3%;
+    vertical-align:middle;
+}
+#record_pr:after , #print_pr:after, #keyb_rel:after,#resetBottom {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+ 
+
+#spinnerTop{
+    padding:0.4em;
+    max-width:42px;
+    max-height:52px;
+    text-align: center;
+    -moz-border-radius: 1px;
+    -webkit-border-radius: 1px;
+    border-radius:5px;
+    border:1px solid black;
+    text-align:center;
+    display:inline-block;
+    margin-left:5%;
+    background-color:black;
+    color:white;
+    vertical-align:middle;
+}
+#spinnerBottom{
+    position:absolute;
+    top:78vh;
+    right:50%;
+    transform:translate(320px);
+    width:9vw;
+    height:10vw;
+    font-size:15px;
+    max-width:42px;
+    max-height:52px;
+    text-align: center;
+    -moz-border-radius: 1px;
+    -webkit-border-radius: 1px;
+    border-radius:5px;
+    border:1px solid black;
+    text-align:center;
+    display:inline-block;
+    margin-left:6%;
+    background-color:black;
+    color:white;
+}
+
+
+
+#resetTop{
+    display:inline-block;
+    vertical-align:middle;
+    width:9vw;
+    max-width:42px;
+    max-height:52px;
+    font-size:11px;
+    border:1px solid black;
+    border-radius:3px;
+    background-color:#DFD5CD;
+    margin-right:3%;
+	padding: 0.6em;	
+	
+}
+#resetBottom{
+    position:absolute;
+    top:72vh;
+    left:50%;
+    transform:translate(-310px);
+    width:9vw;
+    height:10vw;
+    max-width:42px;
+    max-height:52px;
+    font-size:11px;
+    border:3px solid black;
+    border-radius:3px;
+    background-color:#DFD5CD;
+    text-align:center;	
+}
+
+#eliminaStampa{
+    display:inline-block;
+    vertical-align:middle;
+    width:9vw;
+    padding: 0.6em;
+    max-width:42px;
+    max-height:52px;
+    font-size:11px;
+    border:1px solid black;
+    border-radius:3px;
+    background-color:#DFD5CD;
+    margin-right:3%;
+		
+}
+.reset:hover, #eliminaStampa:hover {
+    position: relative;
+    top: 1px;
+    left: 1px;
+    cursor: pointer;
+}
+#etichetta{
+    width:45%;
+    float:left;
+    border-top: 2px solid;
+    color:White;
+    background-color:SlateGrey;
+    font-size:15px;
+    vertical-align:top;
+    margin-left:1%;
+    padding:0.1em;
+}
+#green_light {
+    display:inline-block;
+    width:25%;
+    height:55%;
+    background-color: steelblue;
+    margin-right:0;
+   
+}
+
+#red_light {
+    display:inline-block;
+    width:15%;
+    height:55%;
+    background-color:indianred;
+    border-radius:0 6px 6px 0;
+    margin-left:0;
+}
+
+#record_pr:hover , #print_pr:hover, #keyb_rel:hover{
+    position: relative;
+    top: 1px;
+    left: 1px;
+    border-color: #e5e5e5;
+    cursor: pointer;
+}
+
+.regselected{
+    border:2px solid;
+    border-radius:2px;
+}
+.modactive{
+    color:yellow !important;
+   
+}
+
+.spinner{
+     font-size:15px;
+}
+
+
+
+
+
