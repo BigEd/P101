@@ -1,7 +1,7 @@
 AV,,
 ,,S
 ,,toA
-,,/CV
+,,C/V
 ,,print
-/BV,,
+B/V,,
 ,,S

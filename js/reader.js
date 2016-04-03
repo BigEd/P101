@@ -335,9 +335,9 @@ function execute(instruction){
 	}
 	if (instruction[2].search('V') != -1 || instruction[2].search('W') != -1 || instruction[2].search('Y') != -1 || instruction[2].search('Z') != -1 ) {
         //try to find the letter V,W,Y,Z in the 3rd part of the instruction, we have a jump instruction
-        console.log('trovato un salto: ' + instruction[2]);
+        console.log('founded a jump: ' + instruction[2]);
         
-       var label = instruction[2];
+        var label = instruction[2];
         if (label.search('/') == -1){
             // no / means unconditional jump
             console.log('founded an unconditional jump');
@@ -370,8 +370,9 @@ function execute(instruction){
         }
         if (src.length == 3) { //jump in the X/X form
             if (statoMacchina.reg_A > 0){
-                console.log('type 2 jump from ' + src);
+                console.log('type 2 jump from ',src,' ...');
                 dst = mapJumpLabel(src);
+                console.log('...to ', dst);
                 seek(dst);
             }
             else{

@@ -532,25 +532,25 @@ function mapJumpLabel(letter) {
         return 'A' + letter;
     }
     if (letter == '/V' || letter == '/W' || letter == '/Y' || letter == '/Z'){
-        return '/A' + letter[1];
+        return 'A/' + letter[1];
+    }
+    if (letter[0] == 'C' && letter[1] == '/'){
+        return 'B/' + letter[2];
     }
     if (letter[0] == 'C'){
         return 'B' + letter[1];
     }
-    if (letter[1] == 'C'){      //oppure letter[0-1] == '/C' se è possibile
-        return '/B' + letter[2];
+    if (letter[0] == 'D' && letter[1] == '/'){
+        return 'E/' + letter[2];
     }
     if (letter[0] == 'D'){
         return 'E' + letter[1];
     }
-    if (letter[1] == 'D'){
-        return '/E' + letter[2];
+    if (letter[0] == 'R' && letter[1] == '/'){
+        return 'F/' + letter[2];
     }
     if (letter[0] == 'R'){
         return 'F' + letter[1];
-    }
-    if (letter[1] == 'R'){
-        return '/F' + letter[2];
     }
 }
 
