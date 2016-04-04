@@ -27,6 +27,7 @@ $(function () {
 $(function () {
      //Inserimento virgola
     $('#virgola').click(function () {
+        $(".audioDemo").trigger('play');
         inserisciVirgola();
     });
 });
@@ -34,12 +35,14 @@ $(function () {
 $(function () {
      //Cambio Segno
     $('#segno').click(function () {
+        $(".audioDemo").trigger('play');
         cambiaSegno();
     });
 });
 
 $(function () {
     $("#start").click(function () {
+        $(".audioDemo").trigger('play');
         if (statoMacchina.recordPrPressed){
             // Store
             localStorage.setItem("instruction" + statoMacchina.instructionCounter, ",,S");
@@ -57,6 +60,7 @@ $(function () {
 $(function () {
      //Tasto clear
     $('#clear').click(function () {
+        $(".audioDemo").trigger('play');
         clear();
         updateMachine();
         
@@ -66,6 +70,7 @@ $(function () {
 $(function () {
      //Tasto reset
     $('.reset').click(function () {
+        $(".audioDemo").trigger('play');
         resetStyle();
         resetFunction();
         updateMachine();
@@ -74,6 +79,7 @@ $(function () {
 $(function () {
      //Tasto elimina stampa
     $('#eliminaStampa').click(function () {
+        $(".audioDemo").trigger('play');
         $( "#stampa" ).empty();
         
     });
@@ -81,7 +87,7 @@ $(function () {
 
 $(function () {
     $('.registro').click(function () {    //Seleziona registro
-        //css stuff
+        $(".audioDemo").trigger('play');
         var letter = $(this).html();
         selectRegister(letter);
 	});
@@ -89,75 +95,78 @@ $(function () {
 
 $(function () {
     $('#clear_reg').click(function () {
+        $(".audioDemo").trigger('play');
         clearRegister();
     });
 });
 
 $(function () {
     $('#sum').click(function () {
+        $(".audioDemo").trigger('play');
         somma();
     });
 });
 
 $(function () {
     $('#subtract').click(function () {
-        console.log("funzione sottrai");
+        $(".audioDemo").trigger('play');
         sottrai();
     });
 });
 
 $(function () {
     $('#divide').click(function () {
-        console.log("funzione dividi");
+        $(".audioDemo").trigger('play');
         dividi();
     });
 });
 
 $(function () {
     $('#multiply').click(function () {
-        console.log("funzione moltiplica");
+        $(".audioDemo").trigger('play');
         moltiplica();
     });
 });
 
 $(function () {
     $('#sqrt').click(function () {
-        console.log("funzione moltiplica");
+        $(".audioDemo").trigger('play');
         radice();
     });
 });
 
 $(function () {
     $('#print').click(function () {
-        print();
-        
+        $(".audioDemo").trigger('play');
+        print();        
 	});
 });
 
 $(function () {	
-    $('#fromM').click(function () {     
-     fromM();    
-        
+    $('#fromM').click(function () { 
+        $(".audioDemo").trigger('play');
+        fromM();        
     });
 });
 
 
 $(function () {	
     $('#toA').click(function () {
-        toA();
-        
+        $(".audioDemo").trigger('play');
+        toA();        
     });
 });
 
 $(function () {	
     $('#exchange').click(function () {     //tasto freccia su
-       exchange();
+        $(".audioDemo").trigger('play');
+        exchange();
     });
 });
 
 $(function () {
     $("#record_pr").click(function () {
-       
+        $(".audioDemo").trigger('play');
         if (statoMacchina.recordPrPressed == false){
             console.log("Record Program mode ON");
             modactive_ON('#record_pr');
@@ -177,7 +186,7 @@ $(function () {
 
 $(function () {
     $("#print_pr").click(function () {
-       
+        $(".audioDemo").trigger('play');
         if (statoMacchina.printPrPressed == false){
         console.log("Print Program mode ON");
         modactive_ON('#print_pr');
@@ -196,6 +205,7 @@ $(function () {
 
 $(function () {
     $("#label_V").click(function () {
+        $(".audioDemo").trigger('play');
 		console.log('pressed V');
         if (statoMacchina.recordPrPressed){
             if (statoMacchina.selectedRegister == 'A'){
@@ -223,6 +233,7 @@ $(function () {
 
 $(function () {
     $("#label_W").click(function () {
+        $(".audioDemo").trigger('play');
 		console.log('pressed W');
 		if (statoMacchina.recordPrPressed){
             if (statoMacchina.selectedRegister == 'A'){
@@ -249,6 +260,7 @@ $(function () {
 
 $(function () {
     $("#label_Y").click(function () {
+        $(".audioDemo").trigger('play');
 		console.log('pressed Y');
         if (statoMacchina.recordPrPressed){
             if (statoMacchina.selectedRegister == 'A'){
@@ -275,6 +287,7 @@ $(function () {
 
 $(function () {
     $("#label_Z").click(function () {
+        $(".audioDemo").trigger('play');
 		console.log('pressed Z');
         if (statoMacchina.recordPrPressed){
             if (statoMacchina.selectedRegister == 'A'){
@@ -300,14 +313,13 @@ $(function () {
 });
 $(function () {
     $("#slash").click(function () {
-        slash();
-		
+        $(".audioDemo").trigger('play');
+        slash();		
 	});
 });
 $(function () {
     $("#save").click(function () {
-        saveTextAsFile();
-		
+        saveTextAsFile();		
 	});
 });
 

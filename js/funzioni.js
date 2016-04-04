@@ -158,9 +158,7 @@ function toA(){
             }
             instruction.push(destination);
             instruction.push('toA');
-		
         }
-        
         scegliMod(instruction);
 };
 
@@ -168,16 +166,15 @@ function toA(){
 function exchange() {
 	 var instruction = []; 
 	 if (statoMacchina.slashPressed && statoMacchina.selectedRegister=='M'|| statoMacchina.slashPressed && statoMacchina.selectedRegister == null){
-		
 		instruction.push(null);
 		instruction.push('/');
         instruction.push('exchange');
 		}
-		else{
+    else{
         instruction.push(null);
         instruction.push(statoMacchina.selectedRegister);
         instruction.push('exchange');
-		}
+    }
     scegliMod(instruction);
 		
 };    
@@ -192,14 +189,13 @@ function scegliMod(instruction){
         printInstruction(instruction);
     }
     else if(statoMacchina.printPrPressed){
-            //print the instruction
-            printInstruction(instruction);
-            deselectRegisterBox();
+        //print the instruction
+        printInstruction(instruction);
+        deselectRegisterBox();
         }
     else {
         //execute the instruction
         execute(instruction);
-       
         }
 };
 

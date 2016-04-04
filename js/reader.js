@@ -225,9 +225,10 @@ function execute(instruction){
         var float_A = parseFloat(A);    
         var quoziente = float_A / float_M;
         console.log(quoziente,' =',float_A,' / ',float_M);
-        if (quoziente === Infinity || quoziente === -Infinity || quoziente === NaN) {
+        if (quoziente === Infinity || quoziente === -Infinity || isNaN(quoziente)) {
             console.log("divisione per zero");
             turnOnRedLight();
+            return;
         }
         A = truncateDecimals(quoziente, statoMacchina.numberOfDecimals); //valore troncato
         var R = float_A % float_M;
