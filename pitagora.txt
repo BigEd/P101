@@ -4,11 +4,11 @@ AV,,
 ,,mult
 ,,S
 ,A,print
-,B,exchange
+,/B,exchange
 ,,toA
 ,,mult
 ,A,print
-,B,sum
+,/B,sum
 ,A,print
 ,A,sqrt
 ,A,print

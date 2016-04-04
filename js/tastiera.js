@@ -39,7 +39,7 @@ $(function () {
 });
 
 $(function () {
-    $(".start").click(function () {
+    $("#start").click(function () {
         if (statoMacchina.recordPrPressed){
             // Store
             localStorage.setItem("instruction" + statoMacchina.instructionCounter, ",,S");
@@ -48,11 +48,8 @@ $(function () {
         }
         else{
             statoMacchina.running = true;
-            checkProgram();
-            if (statoMacchina.runnable){
-                console.log('program runnable')
-                runProgram();
-            }
+            stampa(statoMacchina.reg_M + ' S<br>');
+            runProgram();
         }
     });
 });
@@ -312,4 +309,19 @@ $(function () {
         saveTextAsFile();
 		
 	});
+});
+
+$(function () {
+    $('#stepForward').click(function () {
+        statoMacchina.running = true;
+        var i = statoMacchina.currentInstruction;
+        var instruction = localStorage.getItem('instruction'+i);
+        console.log('stepping into instruction ',i+1);
+        if (instruction) {
+            instruction = instruction.split(',');
+            execute(instruction);
+            statoMacchina.currentInstruction++;
+        }
+        statoMacchina.running = false;
+    });
 });

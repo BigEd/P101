@@ -4,62 +4,58 @@
 function execute(instruction){
     //instruction in the form (value,register,command)
     statoMacchina.numberOfDecimals=getWeelPosition(); //Prelevo il valore della "decimal wheel"
-   if (!instruction){
+    if (!instruction){
         statoMacchina.running = false;
         return;
     }
-    
     console.log(instruction);
-    if (instruction[1]==null ||instruction[1]==''){
-        
-        instruction[1]='M';
-    }
-          
-        
-    
     if (instruction[2] == 'S'){
+        printInstruction(instruction.join());
         console.log('stopping the machine');
         statoMacchina.running = false;
     }
     if (instruction[2] == 'print') {
         console.log('printing command');
-        
 		var destination = instruction[1];
-            var dst = 'reg_' + destination;
-            value = statoMacchina[dst];
-			if (value==null){
-				value=0;
-			}
-        if (instruction[1]=='slash') {
+        var dst = 'reg_' + destination;
+        value = statoMacchina[dst];
+        if (value == null){
+            value = 0;
+        }
+        if (instruction[1] == '/') {
             stampa('<br>');
         }
         else if(instruction[1]=='M'){
-		stampa(value + ' ' + '&#x25CA <br>');
+            stampa(value + ' &#x25CA <br>');
 		}
-            else{
+        else{
             stampa(value + ' ' + instruction[1] + ' &#x25CA <br>');
         }
-		
     }
-    if(instruction[2] == 'fromM' && instruction[1] == 'a'){
+    if(instruction[1] == 'A/' && instruction[2] == 'fromM'){
         console.log('Constant as instruction');
-        statoMacchina.reg_M=instruction[0];
-        printInstruction(instruction);
+        storeInRegister(instruction[0], 'M');
+        printInstruction(instruction.join());
        
         if (statoMacchina.running == true){
-             var number=Math.abs(parseFloat(instruction[0]));
+             var number = Math.abs(parseFloat(instruction[0]));
              var length = (number + '').replace('.', '').length;
-             statoMacchina.currentInstruction=statoMacchina.currentInstruction+length
+             console.log('skipping ',length,' instruction because of costant as instruction');
+             statoMacchina.currentInstruction = statoMacchina.currentInstruction + length
         }   
     }
-    if (instruction[2] == 'fromM' && instruction[1] != 'a') {
+    if (instruction[1] != 'A/' && instruction[2] == 'fromM') {
         console.log('fromM command');
+        printInstruction(instruction.join());
+        if (instruction[1] == null || instruction[1] == ''){
+            instruction[1] = 'M';
+        }
         //constructing destination
         var destination = instruction[1];
         console.log("moving values from M to ", destination);     
         //storing the value
         storeInRegister(statoMacchina.reg_M, destination);
-        
+        /*
         //print
         if (destination.search('/') != -1) {
             destination = destination[0].toLowerCase();
@@ -76,9 +72,14 @@ function execute(instruction){
         else {
             stampa(statoMacchina.reg_M + ' ' + destination + ' &#8593;<br>');
 		}
+        */
     }
     if (instruction[2] == 'toA') {
         console.log('toA command');
+        printInstruction(instruction.join());
+        if (instruction[1] == null || instruction[1] == ''){
+            instruction[1] = 'M';
+        }
         var source = instruction[1];
         console.log('moving values from ' + source + ' to A');
         //need to make the conversion first
@@ -93,6 +94,7 @@ function execute(instruction){
 		}
         storeInRegister(value, 'A');
         
+        /*
         //print
         if (source == 'M'){
             stampa(value + ' &#8595;<br>');
@@ -100,11 +102,15 @@ function execute(instruction){
         else{
             stampa(source + ' &#8595;<br>');
         }     
+        */
     }
     
     if (instruction[2] == 'sum') {
         console.log('sum');
-        
+        printInstruction(instruction.join());
+        if (instruction[1] == null || instruction[1] == ''){
+            instruction[1] = 'M';
+        }
 		if(instruction[1] != 'M'){
             var dst = 'reg_' + instruction[1];
             console.log("moving values from ", dst, " to M");
@@ -113,9 +119,10 @@ function execute(instruction){
 				value = 0;
 			}
             statoMacchina.reg_M = value;
-            stampa(instruction[1] + ' ' + '+<br>');		}
+            //stampa(instruction[1] + ' ' + '+<br>');
+        }
 		else{
-            stampa(statoMacchina.reg_M+' '+'+<br>');	
+            //stampa(statoMacchina.reg_M+' '+'+<br>');	
 		}     
         var float_M = parseFloat(statoMacchina.reg_M);
         var float_A = parseFloat(statoMacchina.reg_A);
@@ -128,7 +135,11 @@ function execute(instruction){
     }
    
     if (instruction[2] == 'sub') {
-        console.log('subtract');		
+        console.log('subtract');
+        printInstruction(instruction.join());
+        if (instruction[1] == null || instruction[1] == ''){
+            instruction[1] = 'M';
+        }		
 		if(instruction[1]!='M'){		
             var dst = 'reg_' + instruction[1];
             console.log("moving values from ", dst, " to M");
@@ -137,10 +148,10 @@ function execute(instruction){
 				value=0;
 			}
             statoMacchina.reg_M = value;
-            stampa(instruction[1] + ' ' + '-<br>');
+            //(instruction[1] + ' ' + '-<br>');
 		}
 		else{
-            stampa(statoMacchina.reg_M+' '+'-<br>');	
+            //stampa(statoMacchina.reg_M+' '+'-<br>');	
 		}		
         var M = statoMacchina.reg_M;
         var A = statoMacchina.reg_A;    
@@ -154,7 +165,10 @@ function execute(instruction){
     }
 	if (instruction[2] == 'mult') {
         console.log('mult');
-		
+        printInstruction(instruction.join());
+        if (instruction[1] == null || instruction[1] == ''){
+            instruction[1] = 'M';
+        }
 		if(instruction[1]!='M'){		
             var dst = 'reg_' + instruction[1];
             console.log("moving values from ", dst, " to M");
@@ -163,10 +177,10 @@ function execute(instruction){
 				value=0;
 			}
             statoMacchina.reg_M = value;
-            stampa(instruction[1] + ' ' + 'X<br>');
+            //stampa(instruction[1] + ' ' + 'X<br>');
 		}
 		else{
-            stampa(statoMacchina.reg_M+' '+'X<br>');	
+            //stampa(statoMacchina.reg_M+' '+'X<br>');	
 		}
 		
         var M = statoMacchina.reg_M;
@@ -176,7 +190,6 @@ function execute(instruction){
         var A = statoMacchina.reg_A;    
         var float_M = parseFloat(M)
         var float_A = parseFloat(A);    
-        console.log("adding values");
         var R = float_A * float_M;	
         A = (R).toFixed(statoMacchina.numberOfDecimals); //valore troncato    
         storeInRegister(R, 'R');
@@ -185,19 +198,22 @@ function execute(instruction){
     }
 	if (instruction[2] == 'div') {
         console.log('division');
-		
-		if(instruction[1]!='M'){		
+        printInstruction(instruction.join());
+        if (instruction[1] == null || instruction[1] == ''){
+            instruction[1] = 'M';
+        }
+		if( instruction[1] != 'M'){		
             var dst = 'reg_' + instruction[1];
-            console.log("moving values from ", dst, " to M");
+            console.log("moving values from ", instruction[1], " to M");
             var value = statoMacchina[dst];
-			if (value==null){
-				value=0;
+			if (value == null){
+				value = 0;
 			}
             statoMacchina.reg_M = value;
-            stampa(instruction[1] + ' ' + '&#x00F7<br>');
+            //stampa(instruction[1] + ' ' + '&#x00F7<br>');
 		}
 		else{
-            stampa(statoMacchina.reg_M+' '+'&#x00F7<br>');	
+            //stampa(statoMacchina.reg_M+' '+'&#x00F7<br>');	
 		}
 		
         var M = statoMacchina.reg_M;
@@ -207,21 +223,23 @@ function execute(instruction){
         var A = statoMacchina.reg_A;    
         var float_M = parseFloat(M)
         var float_A = parseFloat(A);    
-        console.log("adding values");
         var quoziente = float_A / float_M;
+        console.log(quoziente,' =',float_A,' / ',float_M);
         if (quoziente === Infinity || quoziente === -Infinity || quoziente === NaN) {
             console.log("divisione per zero");
             turnOnRedLight();
-        }		
-        A = (quoziente).toFixed(statoMacchina.numberOfDecimals); //valore troncato
-        var appo = A * float_M;
-        var R = float_A - appo;
-        R = (R).toFixed(statoMacchina.numberOfDecimals);        
+        }
+        A = truncateDecimals(quoziente, statoMacchina.numberOfDecimals); //valore troncato
+        var R = float_A % float_M;
         storeInRegister(R, 'R');
         storeInRegister(A, 'A')
     }
 	if (instruction[2] == 'sqrt') {
 	    console.log('radice');
+        printInstruction(instruction.join());
+        if (instruction[1] == null || instruction[1] == ''){
+            instruction[1] = 'M';
+        }
 	    if (instruction[1] != 'M') {
             source = instruction[1];
             if (source.search('/') != -1) {
@@ -249,8 +267,11 @@ function execute(instruction){
 	    storeInRegister(M, 'M');
 	}
     if (instruction[2] == 'exchange'){
-	
-	    if(instruction[1]=='slash'){		
+        printInstruction(instruction.join());
+        if (instruction[1] == null || instruction[1] == ''){
+            instruction[1] = 'M';
+        }
+	    if(instruction[1] == '/'){		
 		    var A=statoMacchina.reg_A;
 		    var dec_part=(A+"").split(".")[1];
             if(dec_part==null){
@@ -260,7 +281,7 @@ function execute(instruction){
                 dec_part='0.'+dec_part;
             }
 		    storeInRegister(dec_part, 'M');
-            stampa('/'+' '+'&#x2195<br>');
+            //stampa('/'+' '+'&#x2195<br>');
 		    deselectRegisterBox();
             updateMachine();
             statoMacchina.resetM = true;
@@ -270,7 +291,7 @@ function execute(instruction){
             console.log("puttin R in A");
             var R = statoMacchina.reg_R;
 		    storeInRegister(R, 'A');
-		    stampa(instruction[1] + ' ' + '&#x2195<br>');
+		    //stampa(instruction[1] + ' ' + '&#x2195<br>');
 		    deselectRegisterBox();
             updateMachine();
             statoMacchina.resetM = true;
@@ -282,7 +303,7 @@ function execute(instruction){
             var A = statoMacchina.reg_A;
             var abs_A = Math.abs(A);
             statoMacchina.reg_A = abs_A;
-            stampa(instruction[1] + ' ' + '&#x2195<br>');
+            //stampa(instruction[1] + ' ' + '&#x2195<br>');
             deselectRegisterBox();
             updateMachine();
             statoMacchina.resetM = true;
@@ -301,34 +322,39 @@ function execute(instruction){
         
 	    storeInRegister(X, 'A');
         storeInRegister(A,destination);
-        
+        /*
 	    if(instruction[1] == 'M'){
-	    stampa('&#x2195<br>');
+            stampa('&#x2195<br>');
 	    }
 	    else
 	    {
 		    stampa(instruction[1] + ' ' + '&#x2195<br>');
         }
+        */
 	
     }
     if (instruction[2] == 'clear'){
+        printInstruction(instruction.join());
+        if (instruction[1] == null || instruction[1] == ''){
+            instruction[1] = 'M';
+        }
         var destination = instruction[1];
         var dst = "reg_" + destination;
         
-        if (destination=='M' || destination==null){
-            stampa('*<br>');
+        if (destination == 'M' || destination == null){
+            //stampa('*<br>');
             return;
         }
-        if (destination=='R'){
-            stampa(instruction[1] + ' ' + '*<br>');
+        if (destination == 'R' ){
+            //stampa(instruction[1] + ' ' + '*<br>');
             return;
         }
         else{
             value = statoMacchina[dst];
-                if (value==null){
-                    value=0;
+                if (value == null){
+                    value = 0;
                 }
-            stampa(value+' ' + instruction[1] + ' ' + '*<br>');
+            //stampa(value+' ' + instruction[1] + ' ' + '*<br>');
             statoMacchina[dst] = null;
             
         }
@@ -391,7 +417,6 @@ function seek(label) {
 	var i = 0;
 	console.log('searching for ' + label);
 	for (i = 0; i < statoMacchina.instructionCounter; i++) {
-        console.log('searching at: ' + i);
 		var instruction = localStorage.getItem('instruction' + i);
 		if (instruction) {
             instruction = instruction.split(',');
@@ -431,20 +456,16 @@ function checkProgram() {
     var i=searchConst();
     console.log('numero costanti;'+i);
     var inst = localStorage.getItem('instruction'+i);
-    var instruction = inst.split(',');
-        
-    
-        
-            if (instruction[0] == 'AV'){
-                console.log('condizione AV soddisfatta');
-                return;
-            }
-            else {
-                console.log(instruction[0]);
-                alert('il programma deve iniziare con AV');
-                statoMacchina.runnable = false;
-                turnOnRedLight();
-                return;
-            }
-                
+    var instruction = inst.split(',');  
+    if (instruction[0] == 'AV'){
+        console.log('condizione AV soddisfatta');
+        return;
+    }
+    else {
+        console.log(instruction[0]);
+        alert('il programma deve iniziare con AV');
+        statoMacchina.runnable = false;
+        turnOnRedLight();
+        return;
+    }         
 }

@@ -36,47 +36,47 @@ function print() {
         console.log('Registro:'+letter);
         //create the istruction
 		
-       var instructions = [];
+       var instruction = [];
 		if (statoMacchina.slashPressed && letter=='M' || statoMacchina.slashPressed && letter == null){
 		
-		instructions.push(null);
-		instructions.push('slash');
-        instructions.push('print');
+		instruction.push(null);
+		instruction.push('/');
+        instruction.push('print');
 		}
 		else{
 		
-        instructions.push(null);
-        instructions.push(statoMacchina.selectedRegister);
-        instructions.push('print');
+        instruction.push(null);
+        instruction.push(statoMacchina.selectedRegister);
+        instruction.push('print');
 	   }
-        scegliMod(instructions);
+        scegliMod(instruction);
     
 };
 function somma() {
-    var instructions = [];
-    instructions.push(null);
-    instructions.push(statoMacchina.selectedRegister);
-    instructions.push('sum');
+    var instruction = [];
+    instruction.push(null);
+    instruction.push(statoMacchina.selectedRegister);
+    instruction.push('sum');
    
-    scegliMod(instructions);
+    scegliMod(instruction);
 };
 
 function sottrai() {
-    var instructions = [];
-    instructions.push(null);
-    instructions.push(statoMacchina.selectedRegister);
-    instructions.push('sub');
-    scegliMod(instructions);
+    var instruction = [];
+    instruction.push(null);
+    instruction.push(statoMacchina.selectedRegister);
+    instruction.push('sub');
+    scegliMod(instruction);
 };
 
 function moltiplica() {
     
-    var instructions = [];
-    instructions.push(null);
-    instructions.push(statoMacchina.selectedRegister);
-    instructions.push('mult');
+    var instruction = [];
+    instruction.push(null);
+    instruction.push(statoMacchina.selectedRegister);
+    instruction.push('mult');
         
-    scegliMod(instructions);
+    scegliMod(instruction);
     if(!statoMacchina.recordPrPressed && !statoMacchina.printPrPressed){
         printresult();
     }
@@ -84,11 +84,11 @@ function moltiplica() {
 
 function dividi() {
     
-    var instructions = [];
-    instructions.push(null);
-    instructions.push(statoMacchina.selectedRegister);
-    instructions.push('div');
-    scegliMod(instructions);
+    var instruction = [];
+    instruction.push(null);
+    instruction.push(statoMacchina.selectedRegister);
+    instruction.push('div');
+    scegliMod(instruction);
 
     if(!statoMacchina.recordPrPressed && !statoMacchina.printPrPressed){
         printresult();
@@ -97,11 +97,11 @@ function dividi() {
 };
 function radice() {
     
-    var instructions = [];
-    instructions.push(null);
-    instructions.push(statoMacchina.selectedRegister);
-    instructions.push('sqrt');
-    scegliMod(instructions);
+    var instruction = [];
+    instruction.push(null);
+    instruction.push(statoMacchina.selectedRegister);
+    instruction.push('sqrt');
+    scegliMod(instruction);
 
     if(!statoMacchina.recordPrPressed && !statoMacchina.printPrPressed){
         printresult();
@@ -111,24 +111,29 @@ function radice() {
 function fromM(){
     if (statoMacchina.selectedRegister !== 'R' && statoMacchina.selectedRegister !== 'A' && statoMacchina.selectedRegister !== 'a') {
         //create the istruction
-        var instructions = [];
-        instructions.push(null);
-        instructions.push(statoMacchina.selectedRegister);
-        instructions.push('fromM');
-        scegliMod(instructions);
+        var instruction = [];
+        if (statoMacchina.reg_M != 0 && !statoMacchina.resetM) {
+            instruction.push(statoMacchina.reg_M);
+        }
+        else{
+            instruction.push(null);
+        }
+        instruction.push(statoMacchina.selectedRegister);
+        instruction.push('fromM');
+        scegliMod(instruction);
 
     }
 
     if (statoMacchina.selectedRegister=='a'){
         //create the istruction
 
-        var instructions = [];
-        var value=statoMacchina.reg_M;
-        console.log('valore di M:'+value)
-        instructions.push(value);
-        instructions.push('a');
-        instructions.push('fromM');
-        codificaCostanti(instructions);
+        var instruction = [];
+        var value = statoMacchina.reg_M;
+        console.log('valore di M: ', value)
+        instruction.push(value);
+        instruction.push('a');
+        instruction.push('fromM');
+        codificaCostanti(instruction);
     }
 };
 
@@ -144,51 +149,56 @@ function toA(){
         default:
             var destination = statoMacchina.selectedRegister;
             //create the istruction
-            var instructions = [];
-            instructions.push(null);
-            instructions.push(destination);
-            instructions.push('toA');
+            var instruction = [];
+            if (statoMacchina.reg_M != 0 && !statoMacchina.resetM) {
+                instruction.push(statoMacchina.reg_M);
+            }
+            else{
+                instruction.push(null);
+            }
+            instruction.push(destination);
+            instruction.push('toA');
 		
         }
         
-        scegliMod(instructions);
+        scegliMod(instruction);
 };
 
 
 function exchange() {
-	 var instructions = []; 
+	 var instruction = []; 
 	 if (statoMacchina.slashPressed && statoMacchina.selectedRegister=='M'|| statoMacchina.slashPressed && statoMacchina.selectedRegister == null){
 		
-		instructions.push(null);
-		instructions.push('slash');
-        instructions.push('exchange');
+		instruction.push(null);
+		instruction.push('/');
+        instruction.push('exchange');
 		}
 		else{
-        instructions.push(null);
-        instructions.push(statoMacchina.selectedRegister);
-        instructions.push('exchange');
+        instruction.push(null);
+        instruction.push(statoMacchina.selectedRegister);
+        instruction.push('exchange');
 		}
-    scegliMod(instructions);
+    scegliMod(instruction);
 		
 };    
-function scegliMod(instructions){
+function scegliMod(instruction){
     if (statoMacchina.recordPrPressed){
 		
         //record the instruction
-        localStorage.setItem("instruction" + statoMacchina.instructionCounter, instructions);
+        localStorage.setItem("instruction" + statoMacchina.instructionCounter, instruction);
         statoMacchina.instructionCounter++;
         localStorage.setItem('n', statoMacchina.instructionCounter);
 		deselectRegisterBox();
-        printInstruction(instructions);
+        printInstruction(instruction);
     }
     else if(statoMacchina.printPrPressed){
             //print the instruction
-            printInstruction(instructions);
+            printInstruction(instruction);
             deselectRegisterBox();
         }
     else {
         //execute the instruction
-        execute(instructions);
+        execute(instruction);
        
         }
 };
@@ -307,21 +317,21 @@ function clear() {
 
 function clearRegister() {
 	console.log("Premuto tasto clear register")
-	var instructions = [];
-        instructions.push(null);
-        instructions.push(statoMacchina.selectedRegister);
-        instructions.push('clear');
+	var instruction = [];
+        instruction.push(null);
+        instruction.push(statoMacchina.selectedRegister);
+        instruction.push('clear');
    
     if (statoMacchina.recordPrPressed){
         //record the instruction
-        localStorage.setItem("instruction" + statoMacchina.instructionCounter, instructions);
+        localStorage.setItem("instruction" + statoMacchina.instructionCounter, instruction);
         statoMacchina.instructionCounter++;
         localStorage.setItem('n', statoMacchina.instructionCounter);
 		deselectRegisterBox();
     }
     else {
         //execute the instruction
-        execute(instructions);
+        execute(instruction);
     }
 } ;
 
@@ -362,36 +372,28 @@ function resetFunction() {
 
 function codificaCostanti(instruction){
     console.log('codifica della costante:');
-    printInstruction(instruction);
-    
-    if (statoMacchina.recordPrPressed==true){
+    printInstruction(instruction.join());    
+    if (statoMacchina.recordPrPressed){
         localStorage.setItem("instruction" + statoMacchina.instructionCounter, instruction);
         statoMacchina.instructionCounter++;
         localStorage.setItem('n', statoMacchina.instructionCounter);
     }
-
-    var numero=parseFloat(instruction[0]);
-    console.log('controllo M');
-
-    if(instruction[0] =='0' || instruction[0] == null){
+    var numero = parseFloat(instruction[0]);
+    if (numero == '0' || numero == null) {
         console.log('nessun valore in M')
         return;
     }
-
-    if(numero > 0){
-        var registro_base='R';
-        
+    if (numero > 0) {
+        var registro_base = 'R';
     }
-    else{                           //tolgo segno meno
-        registro_base='F';
-        numero=Math.abs(numero);
-    }    
-
-    var stringa=numero.toString();
-    console.log('stringa senza segno'+stringa);
-    var n_cifre=stringa.length;
+    else {                           //tolgo segno meno
+        registro_base = 'F';
+        numero = Math.abs(numero);
+    }
+    var stringa = numero.toString();
+    console.log('stringa senza segno: ' + stringa);
+    var n_cifre = stringa.length;
     var i;
-
     if (stringa.indexOf('.') !== -1) {   //controllo virgola e segno posizione 
         var index = stringa.indexOf('.');
         stringa = stringa.replace('.','');  //rimuovo la virgola
@@ -399,14 +401,12 @@ function codificaCostanti(instruction){
     }
     else{
         index = n_cifre-1;
-    }  
-  
-    for (i = n_cifre-1; i>=0; i--) {  //scorro la stringa
+    }
+    for (i = n_cifre-1; i >= 0; i--) {  //scorro la stringa
         var value = stringa[i];
         var istruzione = constantInstruction(value);               
         var registro = registro_base;
-
-        if ( i==0 ){   //assegno D o E alla cifra più significativa
+        if (i == 0){   //assegno D o E alla cifra più significativa
            if(registro == 'R' || registro == 'r'){
                registro = 'D';
            }
@@ -414,35 +414,39 @@ function codificaCostanti(instruction){
                registro = 'E';
            }
         }
-
-        if (i == index-1) {     //aggiungo / dove è presente la virgola
+        if (i == index - 1) {     //aggiungo / dove è presente la virgola
             registro=registro_base.toLowerCase();
         }
-
-        if(istruzione != 'none'){  
-            var instructions = [];
-            instructions.push(null);
-            instructions.push(registro);
-            instructions.push(istruzione);
+        if (istruzione != 'none'){  
+            var instruction = [];
+            instruction.push(null);
+            instruction.push(registro);
+            instruction.push(istruzione);
             console.log('istruzione i'+i+'registro:'+registro+'istruzione'+istruzione);
         }
-
         if (statoMacchina.recordPrPressed){
             //record the instruction
-            localStorage.setItem("instruction" + statoMacchina.instructionCounter, instructions);
+            localStorage.setItem("instruction" + statoMacchina.instructionCounter, instruction);
             statoMacchina.instructionCounter++;
             localStorage.setItem('n', statoMacchina.instructionCounter); 
         }
-
         if (statoMacchina.printPrPressed){
-            console.log(instructions);
-            printInstruction(instructions);
+            console.log(instruction);
+            printInstruction(instruction.join());
         }        
     }
-           
+    
     deselectRegisterBox();
     updateMachine();
     statoMacchina.resetM = true;
+};
+
+function truncateDecimals(number, digits) {
+    var multiplier = Math.pow(10, digits);
+    var adjustedNum = number * multiplier;
+    var truncatedNum = Math[adjustedNum < 0 ? 'ceil' : 'floor'](adjustedNum);
+
+    return truncatedNum / multiplier;
 };
 
 function constantInstruction(value){
@@ -476,26 +480,20 @@ function printProgram() {
     var n = statoMacchina.instructionCounter;
     var i = searchConst();
     for (i = searchConst(); i < n; i++){
-        console.log(i);
-        var instruction=localStorage.getItem('instruction'+i);
+        var instruction = localStorage.getItem('instruction'+i);
         printInstruction(instruction);
     }
 };
-function printInstruction(instruction){
-    var a=instruction;
-    var cleanInstruction="";
-    var i;
-    for(i=a.length-1; i>=0; i--) {
-        if(a[i] != ',' && a[i] != null){
-            cleanInstruction=a[i]+cleanInstruction;
-            cleanInstruction=toSymbol(cleanInstruction);
-        }
+function printInstruction(instruction) {
+    if (statoMacchina.running){
+        return;
     }
-    stampa(cleanInstruction +'<br>');
+    var instruction = instruction.split(',');
+    var cleanInstruction = toSymbol(instruction[2]);
+    stampa(instruction[0] + ' ' + instruction[1] + ' ' + cleanInstruction +'<br>');
 };
 
 function toSymbol(instruction){
-    console.log(instruction);
     switch(instruction) {            
         case "toA":
             return " &#x2193";
@@ -581,7 +579,6 @@ function openFile(event) {
         console.log(reader.result.substring(0, 200));
     };
     reader.readAsText(input.files[0]);
-    
 } ;
 
 function printresult(){
@@ -612,19 +609,16 @@ function verifyDEF(){
     } 
 };
 
-
 function storeConst(letter){
-    
-        
         var dst = "reg_" + letter;        
         var value = statoMacchina[dst];
-        var instructions = []; 
+        var instruction = []; 
 	
-		instructions.push(value);
-		instructions.push(letter);
-        instructions.push('store');
+		instruction.push(value);
+		instruction.push(letter);
+        instruction.push('store');
         
-        localStorage.setItem("instruction" + statoMacchina.instructionCounter, instructions);
+        localStorage.setItem("instruction" + statoMacchina.instructionCounter, instruction);
         statoMacchina.instructionCounter++;
         localStorage.setItem('n', statoMacchina.instructionCounter); 
         
@@ -655,12 +649,10 @@ function searchConst() {
     }
     return numConst;
 };
-function loadConst(instruction){
-     
+function loadConst(instruction){     
         var value = instruction[0];
         var destination = instruction[1];
         storeInRegister(value, destination);
-        
 };
 
 function getWeelPosition(){
