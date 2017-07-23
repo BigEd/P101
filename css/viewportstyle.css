@@ -178,7 +178,7 @@ body{margin:0;	background-color:#DFD5CD;}
     max-width:calc(500px/11*2);
     max-height:calc(500px/11*4);
     display: inline-block;
-    background: url("tasti2/start.png") 0 0 / cover;
+    background: url("../tasti2/start.png") 0 0 / cover;
     color: white;
     vertical-align:middle;
     text-align: center;
@@ -197,26 +197,26 @@ body{margin:0;	background-color:#DFD5CD;}
 .registro, #slash, .label{
     font-family: arial,sans-serif;
     font-size: 15px;
-    background: url("tasti2/registro.png") 0 0 / cover;
+    background: url("../tasti2/registro.png") 0 0 / cover;
     color: white;
     font-weight:bold;
 }
 .label{
-	    background: url("tasti2/label.png") 0 0 / cover !important;
+	    background: url("../tasti2/label.png") 0 0 / cover !important;
 
 }
 
 .numero{
     font-family: arial,sans-serif;
     font-size: 15px;
-    background: url("tasti2/numero.png") 0 0 / cover;
+    background: url("../tasti2/numero.png") 0 0 / cover;
     color: black;
     font-weight:bold;
 }
 .operatore, #exchange{
     font-family: arial,sans-serif;
     font-size: 15px;
-    background: url("tasti2/operatore.png") 0 0 / cover;
+    background: url("../tasti2/operatore.png") 0 0 / cover;
     color: black;
     font-weight:bold;
 	
@@ -224,7 +224,7 @@ body{margin:0;	background-color:#DFD5CD;}
 #toA{
     font-family: arial,sans-serif;
     font-size: 15px;
-    background: url("tasti2/cambio.png") 0 0 / cover;
+    background: url("../tasti2/cambio.png") 0 0 / cover;
     color: black;
     font-weight:bold;
     width:calc(98vw*2/11) !important;
@@ -233,7 +233,7 @@ body{margin:0;	background-color:#DFD5CD;}
 #clear{
     font-family: arial,sans-serif;
     font-size: 13px;
-    background: url("tasti2/numero.png") 0 0 / cover;
+    background: url("../tasti2/numero.png") 0 0 / cover;
     color: black;
     font-style:italic;
 }
